@@ -10,9 +10,9 @@ justify-content: center;
 `
 const Main = styled.div`
 display: flex;
-flex-direction: column;
 justify-content: center;
 background: var(--colorPrimary);
+width: 100%;
 
 `
 const Wrapper = styled.div`
@@ -24,14 +24,14 @@ padding: var(--padding);
 height: 64px;
 font-size: 16px;
 width: 100%;
-max-width: 1440px;
+/* max-width: 1440px; */
 `
 const Section = styled.div`
 display: flex;
 align-items: center;
 cursor: ${ ( { logo } ) => logo && 'pointer' };
 .active{
-    color: red;
+    color: #b8ff06;
 }
 `
 const Logo = styled( logoImg )`

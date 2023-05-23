@@ -41,7 +41,20 @@ outline:none;
 border:1px solid #e6e9ec;
 /* ${ getType }  */
 min-width:120px;
+padding-left:${ ( { icon } ) => icon ? "35px" : "20px" };
 
 `
+const Wrapper = styled.div`
+display: flex;
+align-items: center;
+width: ${ ( { width } ) => ( width ? `${ width }px` : `100%` ) };
+position:relative;
 
-export { Container }
+`
+const Icon = styled.div`
+position: absolute;
+left: 10px;
+`
+
+
+export { Container, Wrapper, Icon, }
