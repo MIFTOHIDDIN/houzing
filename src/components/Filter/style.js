@@ -28,9 +28,10 @@ background: white;
 border: 1px solid #E6E9EC;
 `
 const Section = styled.div`
-margin-bottom: 20px;
+margin: 10px 0px;
 gap: 20px;
 display: flex;
+
 
 `
 export { Container, Icons, MenuWrapper, Section }

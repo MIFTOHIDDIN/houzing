@@ -1,10 +1,12 @@
-import React, { useRef } from 'react'
+import React, {  useRef, useState } from 'react'
 import { Container, Icons, Section } from './style'
 import { Input, Button } from '../Generic'
-import { Dropdown } from 'antd'
 import { MenuWrapper } from './style'
 
+
+
 export const Filter = () => {
+    const [ isActive, setIsActive ] = useState( false )
     const countryRef = useRef()
     const regionRef = useRef()
     const cityRef = useRef()
@@ -17,6 +19,7 @@ export const Filter = () => {
     const minPriceRef = useRef()
     const maxPriceRef = useRef()
 
+    const menuRef = useRef()
 
     const menu = <MenuWrapper>
         <h1 className='subTitle'>Adress</h1>
@@ -36,26 +39,38 @@ export const Filter = () => {
         <h1 className='subTitle'>Price</h1>
 
         <Section>
-            <Input ref={minPriceRef} placeholder='Min price' />
-            <Input ref={maxPriceRef} placeholder='Max price' />
+            <Input ref={ minPriceRef } placeholder='Min price' />
+            <Input ref={ maxPriceRef } placeholder='Max price' />
         </Section>
-        <h1 className='subTitle'>Footer</h1>
 
-        <Section></Section>
     </MenuWrapper>
+
+  
     return (
         <Container>
 
             <Input
                 icon={ <Icons.Houses /> }
                 placeholder={ 'Enter an adress, neighborhood, city, or ZIP code' } />
-            <Dropdown overlay={ menu } placement="bottomRight" arrow={ { pointAtCenter: true } }>
-                <div>
+     
+            <div  ref={ menuRef } className='dropdown' >
+                <div className='dropdown-btn'>
 
-                    <Button type={ 'light' }> <Icons.Filter /> Advanced</Button>
+                    <Button onClick={ () => setIsActive( !isActive ) } type={ 'light' }> <Icons.Filter /> Advanced</Button>
                 </div>
-            </Dropdown>
+                { isActive &&
+
+                    <div className='dropdown-content'>
+
+                        { menu }
+
+                    </div>
+                }
+            </div>
             <Button> <Icons.Search />Search</Button>
+
+
+
         </Container>
     )
 }

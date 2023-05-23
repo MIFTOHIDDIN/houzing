@@ -74,3 +74,21 @@ body {
 .slick-dots-bottom {
   width: inherit !important;
 }
+
+.dropdown {
+  margin: 0 auto;
+  position: relative;
+z-index: 1;
+
+}
+
+.dropdown .dropdown-content {
+  width: 880px;
+  position: absolute;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  top: 110%;
+  right: 30px;
+
+
+
+}

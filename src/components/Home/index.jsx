@@ -1,12 +1,12 @@
 import React from 'react'
 import { Container } from './style'
-import {Input} from '../Generic'
+
+import Carousel from '../Carousel'
 
 export const Home = () => {
     return (
         <Container>
-            Home
-            <Input width={120} placeholder={ 'test' } />
+            <Carousel />
         </Container>
     )
 }
