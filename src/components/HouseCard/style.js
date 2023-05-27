@@ -26,8 +26,7 @@ const Container = styled.div`
 
 const Img = styled.img`
   width: 100%;
-  max-height: 220px;
-  min-height: 200px;
+height: 200px;
 `;
 
 const Content = styled.div`

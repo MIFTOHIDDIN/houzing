@@ -1,12 +1,20 @@
-import React, {  useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Container, Icons, Section } from './style'
 import { Input, Button } from '../Generic'
 import { MenuWrapper } from './style'
+import { uzeReplace } from '../../hooks/useReplace'
+import { useNavigate, useLocation } from 'react-router-dom'
+import useSearch from '../../hooks/useSearch'
 
 
 
 export const Filter = () => {
+    const location = useLocation()
     const [ isActive, setIsActive ] = useState( false )
+    const navigate = useNavigate()
+
+    const query = useSearch()
+
     const countryRef = useRef()
     const regionRef = useRef()
     const cityRef = useRef()
@@ -21,13 +29,19 @@ export const Filter = () => {
 
     const menuRef = useRef()
 
+
+
+    const onChange = ( { target: { name, value, placeholder } } ) => {
+        navigate( `${ location?.pathname }${ uzeReplace( name, value ) }` )
+    }
+
     const menu = <MenuWrapper>
         <h1 className='subTitle'>Adress</h1>
         <Section>
-            <Input ref={ countryRef } placeholder='Country' />
-            <Input ref={ regionRef } placeholder='Region' />
-            <Input ref={ cityRef } placeholder='City' />
-            <Input ref={ zipRef } placeholder='Zip code' />
+            <Input defaultValue={ query.get( 'country' ) } onChange={ onChange } ref={ countryRef } name='country' placeholder='Country' />
+            <Input defaultValue={ query.get( 'region' ) } onChange={ onChange } ref={ regionRef } name='region' placeholder='Region' />
+            <Input defaultValue={ query.get( 'city' ) } onChange={ onChange } ref={ cityRef } name='city' placeholder='City' />
+            <Input defaultValue={ query.get( 'zip_code' ) } onChange={ onChange } ref={ zipRef } name='zip_code' placeholder='Zip code' />
         </Section>
         <h1 className='subTitle'>Apartment Info</h1>
 
@@ -45,15 +59,15 @@ export const Filter = () => {
 
     </MenuWrapper>
 
-  
+
     return (
         <Container>
 
             <Input
                 icon={ <Icons.Houses /> }
                 placeholder={ 'Enter an adress, neighborhood, city, or ZIP code' } />
-     
-            <div  ref={ menuRef } className='dropdown' >
+
+            <div ref={ menuRef } className='dropdown' >
                 <div className='dropdown-btn'>
 
                     <Button onClick={ () => setIsActive( !isActive ) } type={ 'light' }> <Icons.Filter /> Advanced</Button>

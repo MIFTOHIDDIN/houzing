@@ -1,35 +1,47 @@
 import React from 'react'
 import { Container, Content, Details, Divider, Icons, Img } from './style'
 import noimg from '../../assets/img/noimg.png'
-export const HouseCard = ( { url, title, info, bed, bath, garage, ruler } ) => {
+export const HouseCard = ( { data = {} } ) => {
+
+    const {
+
+        salePrice,
+        price,
+        attachments,
+        address,
+        city,
+        country,
+        description,
+        houseDetails,
+    } = data
     return (
         <Container>
 
-            <Img src={ url || noimg } />
+            <Img src={ ( attachments && attachments[ 0 ]?.imgPath ) || noimg } />
             <Content>
-                <div className='subTitle'>{ title || "New Apartmen Nice Wiew" }</div>
-                <div className='info'>{ info || "Quincy St, Brooklyn, NY, USA" }</div>
+                <div className='subTitle inline'>{ city || "No name" },{ country },{ description }</div>
+                <div className='info'>{ address || "No adress" }</div>
                 <Details>
                     <Details.Item>
                         <Icons.Bed />
-                        <div className="info">Bed { bed || 0 }</div>
+                        <div className="info">Bed { houseDetails?.beds || 0 }</div>
                     </Details.Item>
 
                     <Details.Item>
                         <Icons.Bath />
-                        <div className="info">Bath { bath || 0 }</div>
+                        <div className="info">Bath { houseDetails?.bath || 0 }</div>
 
                     </Details.Item>
 
                     <Details.Item>
                         <Icons.Garage />
-                        <div className="info">Garage { garage || 0 }</div>
+                        <div className="info">Garage { houseDetails?.garage || 0 }</div>
 
                     </Details.Item>
 
                     <Details.Item>
                         <Icons.Ruler />
-                        <div className="info">Ruler { ruler || 0 }</div>
+                        <div className="info">Ruler { houseDetails?.area || 0 }kv</div>
 
                     </Details.Item>
 
@@ -39,8 +51,8 @@ export const HouseCard = ( { url, title, info, bed, bath, garage, ruler } ) => {
             <Divider />
             <Content footer>
                 <Details.Item >
-                    <div className="info">$2800/mo</div>
-                    <div className="subTitle">$7500/mo</div>
+                    <div className="info">${ salePrice || 0 }</div>
+                    <div className="subTitle">${ price || 0 }</div>
 
                 </Details.Item>
                 <Details.Item row >
