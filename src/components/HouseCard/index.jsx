@@ -13,6 +13,7 @@ export const HouseCard = ( { data = {} } ) => {
         country,
         description,
         houseDetails,
+        category
     } = data
     return (
         <Container>
@@ -20,7 +21,7 @@ export const HouseCard = ( { data = {} } ) => {
             <Img src={ ( attachments && attachments[ 0 ]?.imgPath ) || noimg } />
             <Content>
                 <div className='subTitle inline'>{ city || "No name" },{ country },{ description }</div>
-                <div className='info'>{ address || "No adress" }</div>
+                <div className='info'>{ address || "No adress" }-{ category?.name || "Category" } </div>
                 <Details>
                     <Details.Item>
                         <Icons.Bed />

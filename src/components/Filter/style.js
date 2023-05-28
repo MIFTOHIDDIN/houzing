@@ -8,6 +8,8 @@ padding: var(--padding);
 padding-top: 10px;
 padding-bottom: 10px;
 gap: 20px;
+width: 100%;
+max-width: 1440px;
 
 `
 const Icons = styled.div``

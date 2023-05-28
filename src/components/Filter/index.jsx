@@ -40,7 +40,7 @@ export const Filter = () => {
         <Section>
             <Input defaultValue={ query.get( 'country' ) } onChange={ onChange } ref={ countryRef } name='country' placeholder='Country' />
             <Input defaultValue={ query.get( 'region' ) } onChange={ onChange } ref={ regionRef } name='region' placeholder='Region' />
-            <Input defaultValue={ query.get( 'city' ) } onChange={ onChange } ref={ cityRef } name='city' placeholder='City' />
+            <Input defaultValue={ query.get( 'city' ) } onChange={ onChange } ref={ cityRef } name='address' placeholder='City' />
             <Input defaultValue={ query.get( 'zip_code' ) } onChange={ onChange } ref={ zipRef } name='zip_code' placeholder='Zip code' />
         </Section>
         <h1 className='subTitle'>Apartment Info</h1>
