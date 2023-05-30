@@ -3,14 +3,14 @@ import { Container } from './style'
 
 import Carousel from '../Carousel'
 import HouseCard from '../HouseCard'
-import CategoryCard from '../CategoryCard'
+import Category from '../Category'
 
 export const Home = () => {
     return (
         <Container>
             <Carousel />
-            <HouseCard />
-            <CategoryCard />
+            {/* <HouseCard /> */}
+            <Category />
         </Container>
     )
 }
