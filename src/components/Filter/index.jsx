@@ -35,16 +35,19 @@ export const Filter = () => {
     const maxPriceRef = useRef()
 
     const menuRef = useRef()
-
     useEffect( () => {
         fetch( `${ url }/categories/list`, {
             headers: {
-                Authorization: `Bearer eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJzZWxmIiwic3ViIjoibW1hbWFzb2Jpcm92QG1haWwucnUiLCJleHAiOjE3MDM0NjkzMzAsImlhdCI6MTY4NTQ2OTMzMCwic2NvcGUiOiJST0xFX1VTRVIifQ.p7UNDxoo2QM_A0BkKTfllEPDpdVXnWbazW__NYkQdUpmcZmf3R3Dxx7sErWGFIQguW526NWRr_KdrILZe4dCp6TeTb9eCpw1tvWHbO4ap9DOb9V2XqdK0qxP84wHD6HuzyM2O3yqDS_PWzwlMHcVUqFopWGH3ec7295MMVjQuPo3nZmDeUrqF7gyJgjmPyv3-rZQ3rCnvgrMWpFFm_I5ps_HTiQRUC5Hz2Fesar2GU5EPq5XgAKOpCQ5wDTtScPICDQ3sSj_uJNA0oebfzOvmmuPD2rOd2gEj-4M5fgGJE51WYqXKgFYhKOvxLq94Jg2zgn7qfVwFq3FO_XPfj6Fag`
+                Authorization: `Bearer ${ localStorage.getItem( 'token' ) } `
             }
-        } )
+        }
+        )
             .then( ( res ) => res.json() )
             .then( ( res ) => {
                 setData( res?.data || [] )
+
+
+
 
             } )
 
@@ -56,7 +59,7 @@ export const Filter = () => {
         );
         d?.name && setValue( d?.name )
         !query.get( 'category_id' ) && setValue( 'Select Category' )
-    }, [ query,location?.search, data ] )
+    }, [ query, location?.search, data ] )
 
 
     const onchangeCategory = ( category_id ) => {
